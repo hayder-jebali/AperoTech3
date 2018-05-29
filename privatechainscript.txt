@@ -1,0 +1,19 @@
+#Create genesis block
+geth --datadir ./myprivatechain init ./genesis.json
+
+#Launch an instance
+geth --datadir ./myprivatechain --networkid 7000 console 2>> myprivatechain.log
+
+#add further instance (on same machine)
+geth --datadir ./myprivatechain --networkid 7000 --port 30300 console 2>> myprivatechain.log
+
+#on Geth console:
+#To get node info : admin.nodeInfo.enode
+#To add node manually on console : admin.addPeer(URL)
+#To verify node : admin.peers
+#For auto discover, when launching Geth instance, add --bootnodes
+
+#For importing account:
+geth --data-dir ./myprivatechain account import "/Users/root/myfile"
+#It will prompt you a password if the private key is protected by one.
+#After import, you should see it
